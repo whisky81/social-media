@@ -44,6 +44,9 @@ def create_user(
 
 @router.get("/me", response_model=schemas.PublicUser)
 def get_current_user(current_user: current_user_dependency):
+    """
+    View your own profile.
+    """
     return current_user
 
 @router.get("/{user_id}", response_model=schemas.PublicUser)
@@ -52,7 +55,9 @@ def get_user(
     current_user: current_user_dependency,
     user_id: Annotated[int, Path(gt=0)]
 ):
-    
+    """
+    View the profile of others.
+    """
     user = session.get(models.User, user_id)
     
     if not user:

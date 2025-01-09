@@ -28,5 +28,4 @@ class Vote(SQLModel, table=True):
     post_id: int = Field(primary_key=True, foreign_key="post.id", ondelete="CASCADE")
     user_id: int = Field(primary_key=True, foreign_key="user.id", ondelete="CASCADE") 
     
-    
-    
+        
